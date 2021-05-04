@@ -1,0 +1,2 @@
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYUnitTest\obj\Debug\YZYUnitTest.csprojAssemblyReference.cache
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYUnitTest\obj\Debug\YZYUnitTest.csproj.CoreCompileInputs.cache

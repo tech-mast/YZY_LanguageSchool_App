@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YZYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CateDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Difficulty" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CourseDesc" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Tuition" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evaluations">
+    <Key>
+      <PropertyRef Name="EvaluationID" />
+    </Key>
+    <Property Name="EvaluationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegisterID" Type="int" Nullable="false" />
+    <Property Name="EvDate" Type="datetime" Nullable="false" />
+    <Property Name="Attachment" Type="varbinary" MaxLength="1" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="PayAccount" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="PayDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Registers">
+    <Key>
+      <PropertyRef Name="RegisterID" />
+    </Key>
+    <Property Name="RegisterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
+    <Property Name="RegisterStatus" Type="int" Nullable="false" />
+    <Property Name="PaymentID" Type="int" />
+    <Property Name="Grade" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserRole" Type="int" Nullable="false" />
+    <Property Name="FName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MName" Type="nvarchar" MaxLength="30" />
+    <Property Name="LName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="UserSIN" Type="nchar" MaxLength="9" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="StreetNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StreetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Province" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="PostalCode" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" />
+    <Property Name="Cell" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Photo" Type="varbinary" MaxLength="1" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_COURSES_CATEGORIES">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COURSES_USERS">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EVALUATIONS_REGISTERS">
+    <End Role="Registers" Type="Self.Registers" Multiplicity="1" />
+    <End Role="Evaluations" Type="Self.Evaluations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registers">
+        <PropertyRef Name="RegisterID" />
+      </Principal>
+      <Dependent Role="Evaluations">
+        <PropertyRef Name="RegisterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAYMENTS_USERS">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTERS_COURSES">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="Registers" Type="Self.Registers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Registers">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTERS_PAYMENTS">
+    <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+    <End Role="Registers" Type="Self.Registers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payments">
+        <PropertyRef Name="PaymentID" />
+      </Principal>
+      <Dependent Role="Registers">
+        <PropertyRef Name="PaymentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTERS_USERS">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Registers" Type="Self.Registers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Registers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YZYModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Evaluations" EntityType="Self.Evaluations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registers" EntityType="Self.Registers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_COURSES_CATEGORIES" Association="Self.FK_COURSES_CATEGORIES">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COURSES_USERS" Association="Self.FK_COURSES_USERS">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EVALUATIONS_REGISTERS" Association="Self.FK_EVALUATIONS_REGISTERS">
+      <End Role="Registers" EntitySet="Registers" />
+      <End Role="Evaluations" EntitySet="Evaluations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYMENTS_USERS" Association="Self.FK_PAYMENTS_USERS">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTERS_COURSES" Association="Self.FK_REGISTERS_COURSES">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Registers" EntitySet="Registers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTERS_PAYMENTS" Association="Self.FK_REGISTERS_PAYMENTS">
+      <End Role="Payments" EntitySet="Payments" />
+      <End Role="Registers" EntitySet="Registers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTERS_USERS" Association="Self.FK_REGISTERS_USERS">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Registers" EntitySet="Registers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

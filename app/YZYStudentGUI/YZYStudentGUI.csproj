@@ -60,18 +60,18 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>12EC237AE2AF889E7ED3A0A389EC7E39BC8EAABC</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>YZYStudentGUI_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
+  <!-- <PropertyGroup> -->
+    <!-- <ManifestCertificateThumbprint>12EC237AE2AF889E7ED3A0A389EC7E39BC8EAABC</ManifestCertificateThumbprint> -->
+  <!-- </PropertyGroup> -->
+  <!-- <PropertyGroup> -->
+    <!-- <ManifestKeyFile>YZYStudentGUI_TemporaryKey.pfx</ManifestKeyFile> -->
+  <!-- </PropertyGroup> -->
+  <!-- <PropertyGroup> -->
+    <!-- <GenerateManifests>true</GenerateManifests> -->
+  <!-- </PropertyGroup> -->
+  <!-- <PropertyGroup> -->
+    <!-- <SignManifests>true</SignManifests> -->
+  <!-- </PropertyGroup> -->
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>

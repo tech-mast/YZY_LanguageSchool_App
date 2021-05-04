@@ -1,0 +1,12 @@
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\YZYLibrary.dll.config
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\YZYLibrary.dll
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\YZYLibrary.pdb
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\EntityFramework.dll
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\EntityFramework.SqlServer.dll
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\EntityFramework.xml
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\bin\Debug\EntityFramework.SqlServer.xml
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\obj\Debug\YZYLibrary.csproj.CoreCompileInputs.cache
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\obj\Debug\YZYLibrary.csproj.CopyComplete
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\obj\Debug\YZYLibrary.dll
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\obj\Debug\YZYLibrary.pdb
+E:\Ying\JohnAbbott\GitHub_project\YZYLanguageSchoolApp\app\YZYLibrary\obj\Debug\YZYLibrary.csprojAssemblyReference.cache

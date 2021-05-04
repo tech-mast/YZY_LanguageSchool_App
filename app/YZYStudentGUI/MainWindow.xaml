@@ -97,9 +97,6 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
             <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-        <!--<EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
-        </EventTrigger>-->
     </Window.Triggers>
 
     <!--drawerHost Menu-->
@@ -158,12 +155,6 @@
                             materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"
                             BorderBrush="{DynamicResource MaterialDesignPaper}" MinWidth="150" materialDesign:ColorZoneAssist.Mode="Custom" Foreground="#FF3580BF" Background="white"
                             materialDesign:HintAssist.Hint="Search Courses" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:TextFieldAssist.HasClearButton="True"  ItemsSource="{Binding Path=CategoryStrings}" >
-                            <!--materialDesign:HintAssist.HelperText="Select one OS"-->
-                            <!--<ComboBoxItem Content="" />
-                            <ComboBoxItem Content="English" />
-                            <ComboBoxItem Content="Franch" />
-                            <ComboBoxItem Content="Mandarin" />
-                            <ComboBoxItem Content="Cantonese" />-->
                         </ComboBox>
                         <Button
                         Command="{Binding Path=SearchCommand}" CommandParameter="{Binding SelectedIndex, ElementName=comboSearchCourse}"
@@ -325,10 +316,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </ListViewItem.RenderTransform>
-                            <!--<StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="AccountMultiple" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="white"/>
-                                <TextBlock Text="Our Teachers" Margin="10" VerticalAlignment="Center" Foreground="White"/>
-                            </StackPanel>-->
+
                             <Button
                                 Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
                                 CommandParameter="{x:Static Dock.Bottom}"
@@ -351,10 +339,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </ListViewItem.RenderTransform>
-                            <!--<StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="BookOpenPageVariantOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="white"/>
-                                <TextBlock Text="Our Courses" Margin="10" VerticalAlignment="Center" Foreground="white"/>
-                            </StackPanel>-->
+
                             <Button
                                 Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
                                 CommandParameter="{x:Static Dock.Right}"
@@ -367,20 +352,6 @@
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                        <!--<ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
-                            <ListViewItem.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </ListViewItem.RenderTransform>
-                            <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="EmailEditOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="white"/>
-                                <TextBlock Text="Contact us" Margin="10" VerticalAlignment="Center" Foreground="white"/>
-                            </StackPanel>
-                        </ListViewItem>-->
                         <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
                             <ListViewItem.RenderTransform>
                                 <TransformGroup>
@@ -482,26 +453,6 @@
                             </Button>
                         </ListViewItem>
 
-                        <!--<ListViewItem x:Name="listViewItem7" Height="60" RenderTransformOrigin="0.5,0.5">
-                            <ListViewItem.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </ListViewItem.RenderTransform>
-                            <Button
-                                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                CommandParameter="{x:Static Dock.Top}"
-                                  Width="189" HorizontalAlignment="Left"
-                                Background="{x:Null}" BorderBrush="{x:Null}">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0" Width="159">
-                                    <materialDesign:PackIcon Kind="LoginVariant" Width="30" Height="30"/>
-                                    <TextBlock Margin="15 0">Login</TextBlock>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>-->
                     </ListView>
                 </StackPanel>
 
@@ -524,26 +475,6 @@
                         </Ellipse.Fill>
                     </Ellipse>
                     <TextBlock Text="{x:Static p:Resources.windows_title}" Foreground="White" FontSize="28" FontFamily="Nirmala UI Semilight" Margin="10 70" VerticalAlignment="Top"/>
-                    <!--<TextBlock Text="Language" Foreground="White" FontSize="28" FontFamily="Nirmala UI Semilight" Margin="10 100" VerticalAlignment="Top"/>-->
-                    <!--<StackPanel Margin="0 150">-->
-                    <!--<Grid Height="60" Margin="20 50 20 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="20*"/>
-                                <ColumnDefinition Width="21*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="Total Students" VerticalAlignment="Bottom" Foreground="#FFFBFBFB" Margin="0,0,5,5" Grid.Column="1"/>
-                            <TextBlock Text="1.5K" VerticalAlignment="Top" Foreground="#FFFBFBFB" Grid.Row="1" Margin="5,0,10,0" Grid.Column="1"/>
-
-                            <TextBlock Text="FOLLOWING" VerticalAlignment="Bottom" Foreground="#FFFBFBFB" Margin="5,0,5,5" Grid.Column="2"/>
-                            <TextBlock Text="2.3K" VerticalAlignment="Top" Foreground="#FFFBFBFB" Grid.Row="1" Margin="10 0" Grid.Column="2"/>
-                        </Grid>-->
-                    <!--<TextBlock TextWrapping="Wrap" Margin="10,60" Foreground="#FFFBFBFB" FontSize="14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat ligula et ornare rutrum. Suspendisse vel nibh massa. Sed maximus porta augue eget viverra. Sed ullamcorper interdum ligula. Aenean vitae.</TextBlock>
-                    </StackPanel>-->
                     <StackPanel Margin="0 150">
                         <Grid Height="60" Margin="20 50 20 0">
                             <Grid.ColumnDefinitions>
@@ -583,41 +514,6 @@
                     <Button x:Name="ButtonOpenMenu" Width="40" Height="40" Padding="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,0,0" Click="ButtonOpenMenu_Click" Grid.Row="0" Grid.Column="0">
                         <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="#FF3580BF"/>
                     </Button>
-                    <!--<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                        <ComboBox
-                            x:Name="comboSearchCourse"
-                            SelectedIndex="0"
-                            Margin="8 0 0 0"
-                            BorderThickness="0"
-                            materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignPaper}"
-                            BorderBrush="{DynamicResource MaterialDesignPaper}" MinWidth="150" materialDesign:ColorZoneAssist.Mode="Custom" Foreground="#FF3580BF" Background="white"
-                            materialDesign:HintAssist.Hint="Search Courses" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                              materialDesign:TextFieldAssist.HasClearButton="True">
-                            <ComboBoxItem Content="" />
-                            <ComboBoxItem Content="English" />
-                            <ComboBoxItem Content="Franch" />
-                            <ComboBoxItem Content="Spanish" />
-                            <ComboBoxItem Content="Mandarin" />
-                        </ComboBox>
-                        <Button
-                        Command="{Binding Path=onSearch}" CommandParameter="{Binding SelectedValue, ElementName=comboSearchCourse}"
-                            Name="Search"
-                          Click="Search_Click"
-                          Style="{StaticResource MaterialDesignFlatButton}"
-                          HorizontalAlignment="Right"
-                          Width="50"
-                          Height="50" Content="{materialDesign:PackIcon Kind=Send}">
-                        </Button>
-                        -->
-                    <!--<Button                                 Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                CommandParameter="{x:Static Dock.Right}" Margin="-30,0,0,0">
-                            
-                        </Button>-->
-                    <!--
-                        
-                        
-                        
-                    </StackPanel>-->
                     <TextBlock Foreground="#FF3580BF" Height="55" Grid.Row="0" Margin="119,8,8.5,0" Grid.ColumnSpan="3" VerticalAlignment="Top" Grid.RowSpan="2" HorizontalAlignment="Right">
                         <TextBlock  Name="tbWelcomeUsername" Width="300" Height="30" FontSize="20" FontWeight="Bold" VerticalAlignment="Top"/>
                               <Button
@@ -1125,18 +1021,6 @@
                 </Grid>
             </DockPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10" >
-                <!--<Button  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
-                    <materialDesign:PackIcon Kind="Bell"/>
-                </Button>-->
-
-                <!--language switch button-->
-                <!--<Button
-                                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                CommandParameter="{x:Static Dock.Top}"
-                                  Width="70" Height="30"
-                                  Style="{StaticResource MaterialDesignFlatButton}"
-                      ToolTip="MaterialDesignOutlinedButton"
-                      Content="English" x:Name="btEnglish" HorizontalAlignment="Right" Click="btEnglish_Click" Foreground="white"/>-->
 
                 <materialDesign:PopupBox
                       Style="{StaticResource MaterialDesignToolForegroundPopupBox}"
@@ -1160,28 +1044,6 @@
 
                     </StackPanel>
                 </materialDesign:PopupBox>
-
-                <!--<Button
-                                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                CommandParameter="{x:Static Dock.Top}"
-                                  Width="70" Height="30"
-                                  Style="{StaticResource MaterialDesignFlatButton}"
-                      ToolTip="MaterialDesignOutlinedButton"
-                      Content="中文" x:Name="btChinese" HorizontalAlignment="Right" Click="btChinese_Click" Foreground="white"/>-->
-
-
-
-                <!--<TextBlock
-                VerticalAlignment="Center"
-                Text="En" Foreground="White"/>
-                <ToggleButton
-                Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
-                ToolTip="MaterialDesignSwitchAccentToggleButton"
-                Margin="8 0 16 0"
-                x:Name="LanguageToggle" Click="LanguageToggle_Click"/>
-                <TextBlock
-                VerticalAlignment="Center"
-                Text="中文" Foreground="White"/>-->
                 <Button x:Name="ButtonClose" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonClose_Click">
                     <materialDesign:PackIcon Kind="Power"/>
                 </Button>

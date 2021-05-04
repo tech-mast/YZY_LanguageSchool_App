@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="yzyschoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CateDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Difficulty" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_COURSES_CATEGORIES" FromRole="Categories" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CourseDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Tuition" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_COURSES_CATEGORIES" FromRole="Courses" ToRole="Categories" />
+    <NavigationProperty Name="User" Relationship="Self.FK_COURSES_USERS" FromRole="Courses" ToRole="Users" />
+    <NavigationProperty Name="Registers" Relationship="Self.FK_REGISTERS_COURSES" FromRole="Courses" ToRole="Registers" />
+  </EntityType>
+  <EntityType Name="Evaluation">
+    <Key>
+      <PropertyRef Name="EvaluationID" />
+    </Key>
+    <Property Name="EvaluationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegisterID" Type="Int32" Nullable="false" />
+    <Property Name="EvDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Attachment" Type="Binary" MaxLength="1" FixedLength="false" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Register" Relationship="Self.FK_EVALUATIONS_REGISTERS" FromRole="Evaluations" ToRole="Registers" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="PayAccount" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_PAYMENTS_USERS" FromRole="Payments" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="RegisterID" />
+    </Key>
+    <Property Name="RegisterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="RegisterStatus" Type="yzyschoolModel.RegisterStatusEnum" Nullable="false" />
+    <Property Name="Grade" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_REGISTERS_COURSES" FromRole="Registers" ToRole="Courses" />
+    <NavigationProperty Name="Evaluations" Relationship="Self.FK_EVALUATIONS_REGISTERS" FromRole="Registers" ToRole="Evaluations" />
+    <NavigationProperty Name="User" Relationship="Self.FK_REGISTERS_USERS" FromRole="Registers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserRole" Type="yzyschoolModel.UserRoleEnum" Nullable="false" />
+    <Property Name="FName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserSIN" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="yzyschoolModel.GenderEnum" Nullable="false" />
+    <Property Name="StreetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Province" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Cell" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_COURSES_USERS" FromRole="Users" ToRole="Courses" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_PAYMENTS_USERS" FromRole="Users" ToRole="Payments" />
+    <NavigationProperty Name="Registers" Relationship="Self.FK_REGISTERS_USERS" FromRole="Users" ToRole="Registers" />
+  </EntityType>
+  <Association Name="FK_COURSES_CATEGORIES">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Courses" Type="yzyschoolModel.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COURSES_USERS">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Courses" Type="yzyschoolModel.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTERS_COURSES">
+    <End Role="Courses" Type="yzyschoolModel.Course" Multiplicity="1" />
+    <End Role="Registers" Type="Self.Register" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Registers">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EVALUATIONS_REGISTERS">
+    <End Role="Registers" Type="Self.Register" Multiplicity="1" />
+    <End Role="Evaluations" Type="Self.Evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registers">
+        <PropertyRef Name="RegisterID" />
+      </Principal>
+      <Dependent Role="Evaluations">
+        <PropertyRef Name="RegisterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAYMENTS_USERS">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTERS_USERS">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Registers" Type="Self.Register" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Registers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YZYDbContextAzure" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Courses" EntityType="yzyschoolModel.Course" />
+    <EntitySet Name="Evaluations" EntityType="Self.Evaluation" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Registers" EntityType="Self.Register" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_COURSES_CATEGORIES" Association="Self.FK_COURSES_CATEGORIES">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COURSES_USERS" Association="Self.FK_COURSES_USERS">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTERS_COURSES" Association="Self.FK_REGISTERS_COURSES">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Registers" EntitySet="Registers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EVALUATIONS_REGISTERS" Association="Self.FK_EVALUATIONS_REGISTERS">
+      <End Role="Registers" EntitySet="Registers" />
+      <End Role="Evaluations" EntitySet="Evaluations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYMENTS_USERS" Association="Self.FK_PAYMENTS_USERS">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTERS_USERS" Association="Self.FK_REGISTERS_USERS">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Registers" EntitySet="Registers" />
+    </AssociationSet>
+    <EntitySet Name="vStudentRegisters" EntityType="yzyschoolModel.vStudentRegister" />
+    <EntitySet Name="vOpenCourses" EntityType="yzyschoolModel.vOpenCours" />
+  </EntityContainer>
+  <EnumType Name="UserRoleEnum">
+    <Member Name="Admin" Value="1" />
+    <Member Name="Teacher" Value="2" />
+    <Member Name="Student" Value="3" />
+  </EnumType>
+  <EnumType Name="GenderEnum">
+    <Member Name="Female" Value="1" />
+    <Member Name="Male" Value="2" />
+    <Member Name="Other" Value="3" />
+    <Member Name="Unknown" Value="4" />
+  </EnumType>
+  <EnumType Name="RegisterStatusEnum">
+    <Member Name="Pending" Value="1" />
+    <Member Name="Done" Value="2" />
+    <Member Name="Cancelled" Value="3" />
+  </EnumType>
+  <EntityType Name="vStudentRegister">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="CateDesc" />
+      <PropertyRef Name="Difficulty" />
+      <PropertyRef Name="CourseDesc" />
+      <PropertyRef Name="StartDate" />
+      <PropertyRef Name="EndDate" />
+      <PropertyRef Name="Tuition" />
+      <PropertyRef Name="Teacher" />
+      <PropertyRef Name="RegisterStatus" />
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="RegisterID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CateDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Difficulty" Type="Int16" Nullable="false" />
+    <Property Name="CourseDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Tuition" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Teacher" Type="String" Nullable="false" MaxLength="92" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterStatus" Type="Int32" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="RegisterID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vOpenCours">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="CourseDesc" />
+      <PropertyRef Name="CateDesc" />
+      <PropertyRef Name="StartDate" />
+      <PropertyRef Name="EndDate" />
+      <PropertyRef Name="Tuition" />
+      <PropertyRef Name="Teacher" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="CourseDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CateDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Tuition" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Teacher" Type="String" Nullable="false" MaxLength="92" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
