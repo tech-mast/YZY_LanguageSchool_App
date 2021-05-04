@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="YZYAdminGUI.UCAdminProfile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YZYAdminGUI"
+             mc:Ignorable="d"
+             xmlns:p="clr-namespace:YZYAdminGUI.Properties"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="650" d:DesignWidth="800">
+    <Grid>
+        <Border Margin="15" MinWidth="600" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="10" MaxWidth="900">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Profile" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" Foreground="#ffa64d"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                        <Button Name="btPickPicture"  Margin="15" Width="150" Height="150" Background="#ffb380" Click="btPickPicture_Click">
+                            <Grid Width="150" Height="150">
+                                <TextBlock x:Name="tbImage" Text="{x:Static p:Resources.content_pick_picture}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Image Name="imageViewer" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+                    </StackPanel> 
+
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="tbFirstName" Grid.Row="0" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_first_name}" Style="{StaticResource MaterialDesignTextBlock}" Margin="0 5" Text="{Binding Path=LoginUser.FName}"/>
+                        <TextBlock x:Name="tbMiddleName" Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_middle_name}" Style="{StaticResource MaterialDesignTextBlock}" Margin="0 5"  Text="{Binding Path=LoginUser.MName}"/>
+                        <TextBlock x:Name="tbLastName" Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_last_name}" Style="{StaticResource MaterialDesignTextBlock}" Margin="0 5"  Text="{Binding Path=LoginUser.LName}"/>
+
+                        <TextBlock x:Name="tbSIN" Grid.Row="3" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_user_sin}" Style="{StaticResource MaterialDesignTextBlock}" Margin="0 5"  Text="{Binding Path=LoginUser.UserSIN}"/>
+                        <TextBlock x:Name="tbGender" Grid.Row="4" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_gender}" Style="{StaticResource MaterialDesignTextBlock}" Margin="0 5"  Text="{Binding Path=LoginUser.Gender}"/>
+                        <TextBlock x:Name="tbRole" Grid.Row="5" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_user_role}" Style="{StaticResource MaterialDesignTextBlock}" Margin="0 5"  Text="{Binding Path=LoginUser.UserRole}"/>
+
+                        <TextBox x:Name="tbNewPassword" Grid.Row="6" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_password}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5" Text="{Binding Path=LoginUser.Password, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewConfirmPassword" Grid.Row="7" Grid.Column="0" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_confirm_password}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5"/>
+
+                        <TextBox x:Name="tbNewStreetNo" Grid.Row="0" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_street_no}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5"  Text="{Binding Path=LoginUser.StreetNo, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewStreetName" Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_street_name}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5"  Text="{Binding Path=LoginUser.StreetName, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewCity" Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_city}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5"  Text="{Binding Path=LoginUser.City, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewProvince" Grid.Row="3" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_province}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5" Text="{Binding Path=LoginUser.Province, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewPostalCode" Grid.Row="4" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_postal_code}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5" Text="{Binding Path=LoginUser.PostalCode, Mode=TwoWay}"/>
+
+                        <TextBox x:Name="tbNewPhone" Grid.Row="5" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_phone}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5" Text="{Binding Path=LoginUser.Phone, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewCell" Grid.Row="6" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_cell}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5" Text="{Binding Path=LoginUser.Cell, Mode=TwoWay}"/>
+                        <TextBox x:Name="tbNewEmail"  Grid.Row="7" Grid.Column="1" materialDesign:HintAssist.Hint="{x:Static p:Resources.column_email}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5" Text="{Binding Path=LoginUser.Email, Mode=TwoWay}"/>
+                    </Grid>
+                </Grid>
+                <Button Content="{x:Static p:Resources.content_update_button}" Margin="0 20" Command="{Binding Path=UpdateCommand}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

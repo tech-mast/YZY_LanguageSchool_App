@@ -1,0 +1,82 @@
+﻿<Window x:Class="YZYAdminGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YZYAdminGUI"
+        xmlns:p="clr-namespace:YZYAdminGUI.Properties"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" WindowStyle="None"
+        MouseDown="Window_MouseDown"
+        Title="{x:Static p:Resources.windows_title}" Height="770" Width="950" ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="66" Background="#ffbf80">
+            <TextBlock Text="{x:Static p:Resources.windows_title}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Height="40" HorizontalAlignment="Right" Margin="10 10 70 10" >
+                <!--language switch button-->
+                <TextBlock
+                VerticalAlignment="Center"
+                Text="En" Foreground="white"/>
+                <ToggleButton
+                Margin="8 0 16 0"
+                x:Name="LanguageToggle" Click="LanguageToggle_Click"/>
+                <TextBlock
+                VerticalAlignment="Center"
+                Foreground="white" xml:lang="zh-Hans">
+                    中文
+                     </TextBlock>
+            </StackPanel>
+
+            <!--<materialDesign:PopupBox
+                      Style="{StaticResource MaterialDesignToolForegroundPopupBox}"
+                      PlacementMode="BottomAndAlignCentres"
+                      ToggleCheckedContentCommand="{Binding FloatingActionDemoCommand}"
+                      ToggleCheckedContentCommandParameter="wowsers"
+                      ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionAccentPopupBox" HorizontalAlignment="Right" Margin="0,0,50,0" >
+                <materialDesign:PopupBox.ToggleContent>
+                    <materialDesign:PackIcon
+                              Kind="GTranslate"
+                              Width="30"
+                              Height="30" Foreground="white"/>
+                </materialDesign:PopupBox.ToggleContent>
+                <StackPanel>
+                    <Button
+                          ToolTip="One"
+                          Content="En" Click="btEnglish_Click" Foreground="#FF2196F3" FontWeight="Bold"/>
+                    <Button
+                          ToolTip="Two"
+                          Content="中文" Click="btChinese_Click" Foreground="#FF2196F3" FontWeight="Bold"/>
+
+                </StackPanel>
+            </materialDesign:PopupBox>-->
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_close_Click">
+                <materialDesign:PackIcon Kind="Power"/>
+            </Button>
+        </Grid>
+        <Grid DockPanel.Dock="Top" >
+            <dragablz:TabablzControl>
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController/>
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="{x:Static p:Resources.welcome}" x:Name="tabWelcome">
+                    <local:UCWelcomePage Margin="10" HorizontalAlignment="Center" x:Name="ucWelcome"/>
+                </TabItem>
+                <TabItem Header="{x:Static p:Resources.content_course_tab}" x:Name="tabCourse">
+                    <!-- DataContext="{Binding SearchCourseViewModel}" -->
+                    <local:UCSearchingCourse Margin="10" HorizontalAlignment="Center" x:Name="ucCourse"/>
+                </TabItem>
+                <TabItem Header="{x:Static p:Resources.content_account_tab}" x:Name="tabAccount">
+                    <local:UCSearchingAccount Margin="10" HorizontalAlignment="Center" x:Name="ucAccount"/>
+                </TabItem>
+                <TabItem Header="{x:Static p:Resources.content_teacher_tab}" x:Name="tabTeacher">
+                    <local:UCTeacher Margin="10" HorizontalAlignment="Center" x:Name="ucTeacher"/>
+                </TabItem>
+                <TabItem Header="{x:Static p:Resources.content_profile_tab}" HorizontalAlignment="right" x:Name="tabProfile">
+                    <local:UCAdminProfile Margin="10" HorizontalAlignment="Center" x:Name="ucProfile"/>
+                </TabItem>
+            </dragablz:TabablzControl>
+        </Grid>
+    </DockPanel>
+</Window>
